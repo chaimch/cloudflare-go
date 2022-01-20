@@ -36,14 +36,14 @@ type CustomHostnameSSLSettings struct {
 	EarlyHints    string   `json:"early_hints,omitempty"`
 }
 
-//CustomHostnameOwnershipVerification represents ownership verification status of a given custom hostname.
+// CustomHostnameOwnershipVerification represents ownership verification status of a given custom hostname.
 type CustomHostnameOwnershipVerification struct {
 	Type  string `json:"type,omitempty"`
 	Name  string `json:"name,omitempty"`
 	Value string `json:"value,omitempty"`
 }
 
-//CustomHostnameSSLValidationErrors represents errors that occurred during SSL validation.
+// CustomHostnameSSLValidationErrors represents errors that occurred during SSL validation.
 type CustomHostnameSSLValidationErrors struct {
 	Message string `json:"message,omitempty"`
 }
@@ -212,6 +212,9 @@ func (api *API) CustomHostnames(ctx context.Context, zoneID string, page int, fi
 	v.Set("page", strconv.Itoa(page))
 	if filter.Hostname != "" {
 		v.Set("hostname", filter.Hostname)
+	}
+	if filter.SSL != nil && filter.SSL.Status != "" {
+		v.Set("ssl_status", filter.SSL.Status)
 	}
 
 	uri := fmt.Sprintf("/zones/%s/custom_hostnames?%s", zoneID, v.Encode())

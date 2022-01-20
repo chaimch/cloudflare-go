@@ -1,4 +1,5 @@
-module github.com/cloudflare/cloudflare-go
+// module github.com/cloudflare/cloudflare-go
+module github.com/chaimch/cloudflare-go
 
 go 1.17
 
@@ -24,4 +25,4 @@ require (
 	gopkg.in/yaml.v3 v3.0.0-20200313102051-9f266ea9e77c // indirect
 )
 
-replace github.com/cloudflare/cloudflare-go => github.com/chaimch/cloudflare-go v0.29.1
+// replace github.com/cloudflare/cloudflare-go => github.com/chaimch/cloudflare-go v0.29.1

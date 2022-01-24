@@ -213,6 +213,9 @@ func (api *API) CustomHostnames(ctx context.Context, zoneID string, page int, fi
 	if filter.Hostname != "" {
 		v.Set("hostname", filter.Hostname)
 	}
+	if string(filter.Status) != "" {
+		v.Set("hostname_status", string(filter.Status))
+	}
 	if filter.SSL != nil && filter.SSL.Status != "" {
 		v.Set("ssl_status", filter.SSL.Status)
 	}
